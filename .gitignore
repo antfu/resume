@@ -1,0 +1,7 @@
+node_modules/*
+resume.json
+*.log
+dist
+.DS_Store
+assets/css
+resume.json

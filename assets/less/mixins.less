@@ -1,0 +1,10 @@
+@import 'lib/bootstrap/mixins.less';
+
+.make-social-link(@color){
+    color: @color;
+
+    &:hover, &:focus {
+        text-decoration: none;
+        color: darken(@color, 10%);
+    }
+}

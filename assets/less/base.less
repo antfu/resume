@@ -1,0 +1,67 @@
+@import "variables";
+@import "mixins";
+
+body {
+  font-family: @font-family-sans-serif;
+  color: @theme-font-color;
+  font-size: @font-size-base;
+}
+
+.text-bolder {
+  font-weight: bold;
+}
+
+.name-and-profession {
+  .name {
+    font-size: 2.8rem;
+    margin-bottom: 0;
+  }
+  .job {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media only screen {
+  .container {
+    display: grid;
+    grid-template-columns: auto 15fr 50fr auto;
+    .page {
+      max-width: 50em;
+    }
+  }
+}
+
+@media (max-width: @screen-tablet) {
+  ul {
+    padding-left: 25px;
+  }
+  .container {
+    display: block;
+  }
+  .card {
+    padding: 1em !important;
+  }
+  .background-details {
+    display: block;
+
+    .icon {
+      max-width: inherit;
+      min-width: inherit;
+      text-align: left;
+    }
+
+    .icon,
+    .info {
+      display: block;
+      padding: 10px 0;
+    }
+
+    .title {
+      display: none;
+    }
+  }
+  .card-nested {
+    padding: 5px 0;
+  }
+}
+

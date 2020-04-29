@@ -1,0 +1,141 @@
+.profile-card {
+  width: 100%;
+  text-align: left;
+}
+
+.profile-pic {
+  display: block;
+  padding: 1rem;
+}
+
+.profile-pic img {
+  width: 100px;
+  height: 100px;
+}
+
+.contact-details {
+  .detail {
+    display: block;
+    line-height: 2;
+
+    .icon {
+      padding-right: 7px;
+      color: #888;
+    }
+
+    .info {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.social-links {
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  padding: 0 0.6rem;
+  color: inherit;
+  opacity: 0.7;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  & > * {
+    vertical-align: middle;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:not(.icon) {
+    border-bottom: 1px dashed #0005;
+  }
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.background-card h4 {
+  color: @gray-light;
+  line-height: 1.2;
+  font-size: 1em;
+  background: black;
+  color: white;
+  display: inline-block;
+  padding: 1px 3px 0 3px;
+
+  &:not(:first-child) {
+    margin-top: 2em;
+  }
+}
+
+@iconWidth: 4rem;
+
+.content {
+  line-height: 1.5;
+}
+
+.card {
+  background: @card-bg;
+  padding: 2em 3.5em;
+}
+
+.card-nested {
+  padding: 0.8rem 0 0.8rem 2rem;
+
+  &.relax {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+.card-wrapper {
+  padding: 5px;
+}
+
+.enumeration:not(:last-child):after {
+  content: ", ";
+}
+.enumeration:last-child:after {
+  content: ".";
+}
+
+.github-stars {
+  opacity: 0.6;
+  font-size: 0.9em;
+}
+
+.projects {
+  .text-muted {
+    margin-bottom: 0.4rem;
+  }
+}
+
+.skill-table {
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-gap: 1.5rem 1rem;
+
+  .name {
+    font-weight: bold;
+    text-align: right;
+  }
+}
+
+@media only screen and (max-width: @screen-tablet) {
+  .profile-card,
+  .contact-details,
+  .profile-pic {
+    display: block;
+    text-align: center;
+  }
+  .card-nested {
+    padding-left: 0;
+  }
+}
