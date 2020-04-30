@@ -222,6 +222,10 @@ async function render(resume) {
     return new Handlebars.SafeString(text);
   })
 
+  Handlebars.registerHelper('getBuildDate', function() {
+    return moment().format('MMMM Do YYYY, h:mm:ss a')
+  })
+
   return Handlebars.compile(template)({
     css: css,
     resume: resume

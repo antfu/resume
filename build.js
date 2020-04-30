@@ -29,9 +29,19 @@ async function buildPDF(html) {
   const browser = await puppeteer.launch({ headless: true })
   const page = await browser.newPage();
   console.log('Opening puppeteer...')
-  await page.setContent(html, {waitUntil: 'networkidle0'})
+  await page.setContent(html, { waitUntil: 'networkidle0' })
   console.log('Generating PDF...')
-  const pdf = await page.pdf({ format: 'A4', displayHeaderFooter: false, printBackground: false })
+  const pdf = await page.pdf({
+    format: 'A4', 
+    displayHeaderFooter: false, 
+    printBackground: true,
+    margin: {
+      top: '0.4in',
+      bottom: '0.4in',
+      left: '0.4in',
+      right: '0.4in',
+    }
+  })
   await browser.close()
   console.log('Saving file...')
   fs.writeFileSync('./dist/resume.pdf', pdf)
@@ -39,7 +49,7 @@ async function buildPDF(html) {
   return pdf
 }
 
-async function buildAll(){
+async function buildAll() {
   const html = await buildHTML()
   await buildPDF(html)
 }
