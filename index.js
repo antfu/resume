@@ -6,8 +6,6 @@ var _s = require('underscore.string');
 var moment = require('moment');
 var axios = require('axios')
 
-// Utity Methods ( need be moved to a separate file)
-
 function hasEmail(resume) {
   return !!resume.basics && !!resume.basics.email;
 }
@@ -210,6 +208,12 @@ async function render(resume) {
 
   Handlebars.registerHelper('join', function (arr) {
     return arr.join(', ')
+  })
+
+  Handlebars.registerHelper('breaklines', function(text) {
+    text = Handlebars.Utils.escapeExpression(text);
+    text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+    return new Handlebars.SafeString(text);
   })
 
   return Handlebars.compile(template)({
