@@ -70,13 +70,15 @@ a {
 }
 
 .background-card h4 {
-  color: @gray-light;
   line-height: 1.2;
   font-size: 1em;
-  background: black;
-  color: white;
-  display: inline-block;
-  padding: 1px 3px 0 3px;
+  
+  .title {
+    background: black !important;
+    color: white !important;
+    display: inline-block;
+    padding: 1px 3px 0 3px;
+  }
 
   &:not(:first-child) {
     margin-top: 2em;
@@ -125,6 +127,10 @@ a {
   }
 }
 
+.px10 {
+  height: 10px;
+}
+
 .skill-table {
   display: grid;
   grid-template-columns: max-content auto;
@@ -136,6 +142,16 @@ a {
   }
 }
 
+.project-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5rem 1rem;
+}
+
+.print-only {
+  display: none;
+}
+
 @media only screen and (max-width: @screen-tablet) {
   .profile-card,
   .contact-details,
@@ -145,5 +161,8 @@ a {
   }
   .card-nested {
     padding-left: 0;
+  }
+  .project-table {
+    display: block;
   }
 }

@@ -82,10 +82,14 @@ function getUrlFromUsername(site, username) {
 
 const githubRepoCache = {}
 
-const getRepoStars = async (url) => {
+function getGithubApi(url) {
+  return url.replace('https://github.com/', 'https://api.github.com/repos/')
+}
+
+async function getRepoStars (url) {
   if (githubRepoCache[url])
     return githubRepoCache[url].stargazers_count
-  const api = url.replace('https://github.com/', 'https://api.github.com/repos/')
+  const api = getGithubApi(url)
   const { data } = await axios.get(api)
   githubRepoCache[url] = data
   return data.stargazers_count
@@ -209,6 +213,8 @@ async function render(resume) {
   Handlebars.registerHelper('join', function (arr) {
     return arr.join(', ')
   })
+
+  Handlebars.registerHelper('getGithubApi', getGithubApi)
 
   Handlebars.registerHelper('breaklines', function(text) {
     text = Handlebars.Utils.escapeExpression(text);

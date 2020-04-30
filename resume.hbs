@@ -37,14 +37,14 @@
                   {{#if email}}
                     <div class="detail">
                       <span class="info">
-                        <a href="mailto:{{email}}" class="link-disguise" itemprop="email">{{email}}</a>
+                        <a href="mailto:{{email}}" class="link-disguise" itemprop="email" target="_blank">{{email}}</a>
                       </span>
                     </div>
                   {{/if}}
 
                   {{#if phone}}
                     <div class="detail">
-                      <a href="tel://{{phone}}" class="link-disguise info" itemprop="telephone">
+                      <a href="tel://{{phone}}" class="link-disguise info" itemprop="telephone" target="_blank">
                         {{phone}}
                       </a>
                     </div>
@@ -66,15 +66,9 @@
                 {{#profiles}}
                   <a class="social-link icon" href="{{url}}" target="_blank">
                     <span class="iconify" data-icon="{{toSocialIcon network}}"></span>
-                    <!--<span class="social-link-text">{{username}}</span>-->
+                    <!--<span class="social-link-text print-only">{{username}}</span>-->
                   </a>
                 {{/profiles}}
-                {{#if website}}
-                  <a class="social-link icon" href="{{website}}" target="_blank">
-                    <span class="iconify" data-icon="{{toSocialIcon 'website'}}"></span>
-                    <!--<span class="social-link-text">{{website}}</span>-->
-                  </a>
-                {{/if}}
               </div>
             </div>
           </div>
@@ -108,7 +102,7 @@
                     </p>
                     <p>{{summary}}</p>
                     {{#if highlights}}
-                      <ul>
+                      <ul class='highlight'>
                         {{#each highlights}}
                           <li> {{.}} </li>
                         {{/each}}
@@ -122,20 +116,21 @@
 
             {{#if resume.projects}}
             <h4 id="projects"><span class="title">Projects</span></h4>
-            <ul class="list-unstyled projects">
+            <div class="list-unstyled projects">
+              <div class="project-table">
               {{#each resume.projects}}
                 <li class="card-nested">
                   <div class="content has-sidebar">
                     <p class="clear-margin-sm" itemprop="award">
-                      <strong>{{name}}</strong>&nbsp
+                      <strong>{{displayName}}</strong>&nbsp
                       {{#if githubUrl}}
-                        <a href="{{githubUrl}}" class='icon'>
+                        <a href="{{githubUrl}}" class='icon' target="_blank">
                           <span class="iconify" data-icon="{{toSocialIcon 'github'}}"></span>
                         </a>
                         &nbsp
                       {{/if}}
                       {{#if website}}
-                        <a href="{{website}}" class='icon'>
+                        <a href="{{website}}" class='icon' target="_blank">
                           <span class="iconify" data-icon="{{toSocialIcon 'website'}}"></span>
                         </a>
                         &nbsp
@@ -144,19 +139,23 @@
                     <p class="text-muted">
                       <small> {{summary}} </small>
                     </p>
-                    <p class="github-stars">
-                      <span class="iconify" data-icon="ri:star-fill"></span>
-                      {{stars}}
-                    </p>
+                    {{#if githubUrl}}
+                      <p class="github-stars">
+                        <span class="iconify" data-icon="ri:star-fill"></span>
+                        <span class="stars" data-gh-api="{{getGithubApi githubUrl}}">{{stars}}</span>
+                      </p>
+                    {{/if}}
                   </div>
                 </li>
               {{/each}}
+              </div>
               {{#if resume.basics.github_url}}
                 <li class="card-nested text-muted">
                   <a href="{{resume.basics.github_url}}">More on Github...</a>
                 </li>
               {{/if}}
-            </ul>
+              <div class='px10'></div>
+            </div>
             {{/if}}
 
             <h4 id="skills"><span class="title">Skills</span> </h4>
@@ -168,6 +167,7 @@
                 {{/each}}
               </div>
             </div>
+            <div class='px10'></div>
   
             <h4 id="education"><span class="title">Education</span></h4>
             
@@ -211,10 +211,10 @@
                     </p>
                     <p class="clear-margin">{{summary}}</p>
                   </div>
-                  
                 </li>
               {{/each}}
             </ul>
+            <div class='px10'></div>
             {{/if}}
 
             {{#if resume.awards}}
@@ -310,10 +310,39 @@
             </ul>
             {{/if}}
 
+            <div style="text-align:center">
+              <div class="detail no-print" style="font-size: 1rem;margin-top:1rem;">
+                <a href="https://resume.antfu.me/resume.pdf" class="info" itemprop="pdf" target="_blank">
+                  PDF Version
+                </a>
+              </div>
+               <div class="detail print-only" style="font-size: 1rem;margin-top:1rem;" >
+                <a href="https://resume.antfu.me" class="info" itemprop="pdf" target="_blank">
+                  Online Version
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </div>
+
     
+    <script>
+      async function updateStars(){
+        await Promise.all(
+          Array.from(document.querySelectorAll('[data-gh-api]'))
+            .map(async (e) => {
+              const api = e.dataset.ghApi
+              const r = await fetch(api)
+              const json = await r.json()
+              if (json.stargazers_count)
+                e.innerText = json.stargazers_count
+              console.info(`${api} - ${json.stargazers_count}`)
+            })
+        )
+      }
+      window.addEventListener('load', updateStars)
+    </script>
   </body>
 </html>
