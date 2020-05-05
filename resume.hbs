@@ -9,10 +9,8 @@
     <title>{{#resume.basics}}{{name}}{{/resume.basics}} - Résumé</title>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap" rel="stylesheet">
-    <style>
-      {{{css}}}
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC|Nunito+Sans:400,700&display=swap" rel="stylesheet">
+    <style>{{{css}}}</style>
   </head>
 
   <body itemscope itemtype="http://schema.org/Person">
@@ -207,7 +205,7 @@
                       {{publisher}}
                     </p>
                     <p class="text-muted">
-                      <small> {{releaseDate}} </small>
+                      <small> {{releaseDate}} {{dateNote}} </small>
                     </p>
                     <p class="clear-margin">{{summary}}</p>
                   </div>
