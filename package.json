@@ -7,24 +7,24 @@
     "build": "grunt less && node ./build.js"
   },
   "dependencies": {
-    "gravatar": "^1.0.6",
-    "handlebars": "^2.0.0-alpha.4",
-    "moment": "^2.8.1",
+    "gravatar": "^1.8.0",
+    "handlebars": "^4.7.6",
+    "moment": "^2.25.3",
     "optimist": "^0.6.1",
-    "resume-schema": "0.0.15",
-    "tarball-extract": "0.0.3",
-    "underscore": "^1.6.0"
+    "resume-schema": "0.1.3",
+    "tarball-extract": "0.0.6",
+    "underscore": "^1.10.2"
   },
   "devDependencies": {
     "axios": "^0.19.2",
     "fs-extra": "^9.0.0",
-    "grunt": "^0.4.5",
+    "grunt": "^1.1.0",
     "grunt-cli": "^1.3.2",
-    "grunt-contrib-less": "^0.11.4",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-exec": "^0.4.6",
-    "less": "^1.7.5",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-exec": "^3.0.0",
+    "less": "^3.11.1",
     "puppeteer": "^3.0.2",
-    "underscore.string": "^2.3.3"
+    "underscore.string": "^3.3.5"
   }
 }
