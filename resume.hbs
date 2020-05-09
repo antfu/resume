@@ -174,7 +174,7 @@
                 <li class="card-nested">
                   <div class="content has-sidebar">
                     <p class="clear-margin-sm">
-                      <strong>{{area}}, {{studyType}}</strong>,&nbsp;
+                      <strong>{{#if area}} {{area}}, {{/if}}{{studyType}}</strong>,&nbsp;
                       {{institution}}
                     </p>
                     <p class="text-muted">
@@ -182,6 +182,7 @@
                         {{startDate}} - {{#if endDate}} {{endDate}} {{else}} Currently Pursuing {{/if}}
                       </small>
                     </p>
+                    <div>{{description}}</div>
                     <i>{{gpa}}</i>
                     <div class="space-top labels">
                       {{#courses}} <span class="label label-keyword">{{.}}</span> {{/courses}}
@@ -193,7 +194,7 @@
 
 
             {{#if resume.publications}}
-            <h4 id="publications"><span class="title">Talks</span> </h4>
+            <h4 id="publications"><span class="title">Talk</span> </h4>
             <ul class="list-unstyled">
               {{#each resume.publications}}
                 <li class="card-nested">
@@ -309,17 +310,17 @@
             {{/if}}
 
             <div style="text-align:center">
-              <div class="detail no-print" style="font-size:1.5rem;margin-top:1rem;">
+              <div class="detail no-print" style="font-size:1.5rem;margin-top:2rem;">
                 <a href="https://resume.antfu.me/resume.pdf" class="info" itemprop="pdf" target="_blank">
                   PDF Version
                 </a>
               </div>
-               <div class="detail print-only" style="font-size:1.5rem;margin-top:1rem;" >
+               <div class="detail print-only" style="font-size:1.5rem;margin-top:2rem;" >
                 <a href="https://resume.antfu.me" class="info" itemprop="pdf" target="_blank">
                   Online Version
                 </a>
               </div>
-              <div style="opacity:0.7; font-size:1.2rem;margin-top:1rem;">Last updated by {{getBuildDate ''}}</div>
+              <div style="opacity:0.7; font-size:1.2rem;margin-top:1rem;">Last updated at {{getBuildDate ''}}</div>
             </div>
           </div>
         </div>
