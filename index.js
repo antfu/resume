@@ -89,10 +89,16 @@ function getGithubApi(url) {
 async function getRepoStars (url) {
   if (githubRepoCache[url])
     return githubRepoCache[url].stargazers_count
-  const api = getGithubApi(url)
-  const { data } = await axios.get(api)
-  githubRepoCache[url] = data
-  return data.stargazers_count
+  try {
+    const api = getGithubApi(url)
+    const { data } = await axios.get(api)
+    githubRepoCache[url] = data
+    return data.stargazers_count
+  }
+  catch(e){
+    console.error(e)
+    return 'NaN'
+  }
 }
 
 async function render(resume) {
@@ -206,7 +212,8 @@ async function render(resume) {
       github: 'ri:github-fill',
       instagram: 'ri:instagram-line',
       twitter: 'ri:twitter-fill',
-      website: 'ri:global-line'
+      website: 'ri:global-line',
+      link: 'ri:arrow-right-up-line'
     }[text.trim().toLowerCase()]
   })
 

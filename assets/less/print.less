@@ -21,6 +21,12 @@
     border: 0;
     padding: 0;
   }
+  .text-muted {
+    color: #777 !important;
+    * {
+      color: inherit !important;
+    }
+  }
   .container {
     max-width: 100%;
     width: 100%;
@@ -45,7 +51,7 @@
   }
   .project-table {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 0.8rem 1rem;
   }
   .highlight {
@@ -67,5 +73,11 @@
   }
   .background-card h4:not(:first-child) {
     margin-top: 1em;
+  }
+  #work-projects-group {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 2fr 4fr;
+    page-break-after: always;
   }
 }
