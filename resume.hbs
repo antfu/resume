@@ -119,9 +119,9 @@
                     </li>
                   {{/each}}
                   </div>
-                  {{#if resume.basics.github_url}}
+                  {{#if resume.basics.projects_url}}
                     <li class="card-nested text-muted">
-                      <a href="{{resume.basics.github_url}}">More on Github...</a>
+                      <a href="{{resume.basics.projects_url}}" target="_blank">More Projects...</a>
                     </li>
                   {{/if}}
                   <div class='px10'></div>
@@ -137,7 +137,7 @@
                       <div class="content has-sidebar">
                         <p class="clear-margin-sm">
                           <strong>{{#if website}}<a href="{{website}}" target="_blank">{{company}}</a>{{else}}{{company}}{{/if}}</strong>
-                          {{position}}
+                          <span class="text-muted" style="margin-left: 0.3em">{{position}}</span>
                         </p>
                         <p class="text-muted">
                           <small>
@@ -199,15 +199,13 @@
 
 
             {{#if resume.publications}}
-            <h4 id="publications"><span class="title">Talk</span> </h4>
+            <h4 id="publications"><span class="title">Talks</span> </h4>
             <ul class="list-unstyled">
               {{#each resume.publications}}
-                <li class="card-nested">
+                <li class="card-nested" style="margin-bottom: 0.5em">
                   <div class="content has-sidebar">
                     <p class="clear-margin-sm">
-                      <strong>
-                        {{#if website}} <a href="{{website}}"  target="_blank">{{name}}</a> {{else}} {{name}} {{/if}}
-                      </strong>,&nbsp;
+                      <strong>{{#if website}}<a href="{{website}}" target="_blank">{{name}}</a>{{else}}{{name}}{{/if}}</strong>,&nbsp;
                       {{publisher}}
                     </p>
                     <p class="text-muted clear-margin-sm">
