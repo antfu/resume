@@ -2,7 +2,7 @@
 
 This is my Résumé generator. You can check out my Résumé [here](https://resume.antfu.me).
 
-The theme is heavy modifed from [jsonresume-theme-kwan](https://github.com/icoloma/jsonresume-theme-kwan).
+The theme is heavy modified from [jsonresume-theme-kwan](https://github.com/icoloma/jsonresume-theme-kwan).
 
 ## How it works
 

@@ -213,7 +213,8 @@ async function render(resume) {
       instagram: 'ri:instagram-line',
       twitter: 'ri:twitter-fill',
       website: 'ri:global-line',
-      link: 'ri:arrow-right-up-line'
+      link: 'ri:arrow-right-up-line',
+      portfolio: 'ri:account-circle-fill'
     }[text.trim().toLowerCase()]
   })
 
