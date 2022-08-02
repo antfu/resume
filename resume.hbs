@@ -32,6 +32,10 @@
                     <div class="text-muted job" itemprop="jobTitle">{{label}}</div>
                   </div>
 
+                  {{#if address}}
+                    <div class="text-muted info" itemprop="address" style="font-size:0.9em">{{address}}</div>
+                  {{/if}}
+
                   {{#if email}}
                     <div class="detail">
                       <span class="info">
