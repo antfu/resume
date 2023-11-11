@@ -16,7 +16,7 @@
     "underscore": "^1.13.4"
   },
   "devDependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "concurrently": "^7.3.0",
     "fs-extra": "^10.1.0",
     "grunt": "^1.5.3",
